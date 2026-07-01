@@ -24,13 +24,28 @@ export function Contact() {
       return
     }
 
+    const formData = new FormData(formRef.current)
+    const subject = String(formData.get('subject') || 'Portfolio message')
+    let titleInput = formRef.current.elements.namedItem('title') as HTMLInputElement | null
+
+    if (!titleInput) {
+      titleInput = document.createElement('input')
+      titleInput.type = 'hidden'
+      titleInput.name = 'title'
+      formRef.current.appendChild(titleInput)
+    }
+
+    titleInput.value = subject
+
     setStatus('Sending message...')
     try {
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey)
       formRef.current.reset()
       setStatus('Message sent. Thank you for reaching out.')
-    } catch {
-      setStatus('Message could not be sent right now. Please check your EmailJS template and keys.')
+    } catch (error) {
+      const emailError = error as { status?: number; text?: string; message?: string }
+      const details = emailError.text || emailError.message || 'Please check your EmailJS service, template, and public key.'
+      setStatus(`EmailJS error${emailError.status ? ` ${emailError.status}` : ''}: ${details}`)
     }
   }
 
