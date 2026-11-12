@@ -5,21 +5,21 @@ import { SectionHeader } from '../SectionHeader'
 const timeline = [
   {
     title: 'Bachelor of Science in Information Technology',
-    meta: 'Fresh Graduate',
+    meta: 'Davao del Sur State College · 2021–2026',
     icon: FiBookOpen,
-    copy: 'Completed academic training in programming, database systems, web development, mobile development, networking, and system analysis.',
+    copy: 'Completed academic training in programming, database systems, web development, networking, and system analysis, with a focus on practical project delivery.',
   },
   {
-    title: 'RODWAY Capstone Project',
-    meta: 'Graduation Milestone',
+    title: 'Capstone Project Public Presentation',
+    meta: 'Top 3 Best Paper · June 9, 2026',
     icon: FiAward,
-    copy: 'Built an AI-powered rodent detection and monitoring system combining YOLOv8, ESP32-CAM, Laravel, Supabase, and Flutter.',
+    copy: 'Presented RODWAY during the Agriculture, Environment & Indigenous Knowledge plenary session and received Top 3 Best Paper recognition.',
   },
   {
-    title: 'Ready for Software Roles',
-    meta: 'Next Step',
+    title: 'Base Batch Workshop Series',
+    meta: 'Certificate of Participation · May 7, 2025',
     icon: FiCheckCircle,
-    copy: 'Focused on contributing to web, mobile, full stack, QA, support, and junior developer roles while continuing to learn modern engineering practices.',
+    copy: 'Participated in the DSSC TechTugon workshop series, extending hands-on learning beyond the classroom.',
   },
 ]
 

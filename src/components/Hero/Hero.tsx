@@ -32,8 +32,8 @@ export function Hero() {
             I build responsive interfaces, practical systems, web and mobile with a strong interest in AI-assisted and IoT-enabled solutions.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <a href="./leojay-canque-cv.jpg" download className="magnetic inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-slate-950 sm:text-base">
-              <FiDownload /> Download Resume
+            <a href={`${import.meta.env.BASE_URL}cv-canque-leojay.pdf`} target="_blank" rel="noreferrer" className="magnetic inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-sm font-bold text-slate-950 sm:text-base">
+              <FiDownload /> Open Resume
             </a>
             <a href="#Projects" className="magnetic inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-3 text-sm font-bold text-white sm:text-base">
               <FiZap /> View Projects

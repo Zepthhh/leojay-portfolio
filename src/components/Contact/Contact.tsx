@@ -69,7 +69,7 @@ export function Contact() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             {[
-              [FaGithub, '#', 'GitHub'],
+              [FaGithub, 'https://github.com/Zepthhh', 'GitHub'],
               [FaLinkedinIn, '#', 'LinkedIn'],
               [FaFacebookF, 'https://www.facebook.com/ljay17', 'Facebook'],
               [FiMail, `mailto:${contactEmail}`, 'Email'],
