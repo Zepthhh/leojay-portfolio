@@ -124,15 +124,15 @@ export const projects = [
     featured: true,
   },
   {
-    title: 'Document Management System',
-    subtitle: 'Approval and Tracking Platform',
+    title: 'LDMS',
+    subtitle: 'Learning and Development Management System',
     status: 'Web Application',
     description:
-      'A web-based document management system for incoming and outgoing documents with user submission, administrator approval, tracking, search, filtering, and secure record management.',
-    impact: 'Creates clearer document workflows for users and administrators.',
-    features: ['Incoming documents', 'Outgoing documents', 'Admin dashboard', 'Approval workflow', 'Tracking', 'Search', 'Filtering'],
+      'A Laravel web application for managing employee learning and development activities, including seminars, applications, attendance, certificates, reports, and progress tracking.',
+    impact: 'Creates one organized workflow for employees and administrators to coordinate professional-development records and approvals.',
+    features: ['Seminar management', 'Employee applications', 'Attendance tracking', 'Certificates', 'Accomplishment reports', 'Analytics dashboard', 'Role-based access', 'Audit logs'],
     tech: ['Laravel', 'PHP', 'MySQL'],
-    github: '#',
+    github: 'https://github.com/Zepthhh/LDMS',
   },
   {
     title: 'Personal Portfolio Website',
