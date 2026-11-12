@@ -124,7 +124,6 @@ export const projects = [
       './rodway-live-activity.jpg',
       './rodway-smart-trap.jpg',
       './rodway-reports.png',
-      './rodway-mobile-dashboard.png',
     ],
     live: 'https://rodway.dsscebamboo.com/',
     github: '#',

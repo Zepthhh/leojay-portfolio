@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiExternalLink, FiGithub, FiX } from 'react-icons/fi'
+import { FiArrowLeft, FiExternalLink, FiGithub, FiX } from 'react-icons/fi'
 import { SectionHeader } from '../SectionHeader'
 import { projects } from '../../data/portfolio'
 
@@ -69,6 +69,17 @@ function ProjectVisual({
 export function Projects() {
   const [selected, setSelected] = useState<Project | null>(null)
   const [previewImage, setPreviewImage] = useState<string | null>(null)
+
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return
+      if (previewImage) setPreviewImage(null)
+      else setSelected(null)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [previewImage])
 
   return (
     <section id="Projects" className="section-shell">
@@ -163,7 +174,7 @@ export function Projects() {
                           <img
                             src={image}
                             alt={`${selected.title} project screen`}
-                            className="h-full w-full object-cover object-top transition duration-300 hover:scale-105"
+                            className="h-full w-full object-contain transition duration-300 hover:scale-105"
                             loading="lazy"
                           />
                         </button>
@@ -194,14 +205,17 @@ export function Projects() {
             <AnimatePresence>
               {previewImage && (
                 <motion.div
-                  className="fixed inset-0 z-[110] grid place-items-center bg-black/85 p-4 backdrop-blur-xl"
+                  className="fixed inset-0 z-[110] grid place-items-center bg-black/90 p-4 backdrop-blur-xl"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  onClick={() => setPreviewImage(null)}
+                  onClick={(event) => {
+                    event.stopPropagation()
+                    setPreviewImage(null)
+                  }}
                 >
                   <motion.div
-                    className="relative max-h-[92vh] w-full max-w-6xl"
+                    className="relative flex max-h-[92vh] w-full max-w-6xl flex-col items-center"
                     initial={{ scale: 0.96, y: 20 }}
                     animate={{ scale: 1, y: 0 }}
                     exit={{ scale: 0.96, y: 20 }}
@@ -209,16 +223,23 @@ export function Projects() {
                   >
                     <button
                       type="button"
+                      onClick={() => setPreviewImage(null)}
+                      className="absolute left-3 top-3 z-10 inline-flex items-center gap-2 rounded-full border border-white/15 bg-slate-950/85 px-4 py-2 text-sm font-bold text-white backdrop-blur"
+                    >
+                      <FiArrowLeft /> Back to project
+                    </button>
+                    <button
+                      type="button"
                       aria-label="Close image preview"
                       onClick={() => setPreviewImage(null)}
-                      className="absolute right-3 top-3 z-10 grid size-11 place-items-center rounded-full border border-white/15 bg-slate-950/80 text-white backdrop-blur"
+                      className="absolute right-3 top-3 z-10 grid size-11 place-items-center rounded-full border border-white/15 bg-slate-950/85 text-white backdrop-blur"
                     >
                       <FiX />
                     </button>
                     <img
                       src={previewImage}
                       alt={`${selected.title} enlarged project screen`}
-                      className="max-h-[92vh] w-full rounded-3xl border border-white/10 bg-slate-950 object-contain"
+                      className="max-h-[92vh] max-w-full rounded-3xl border border-white/10 bg-slate-950 object-contain"
                     />
                   </motion.div>
                 </motion.div>
